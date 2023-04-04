@@ -1,0 +1,19 @@
+{
+  "name": "triviaapp",
+  "version": "1.0.0",
+  "description": "Trivia game",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rodriguez-Jp/TriviaApp.git"
+  },
+  "author": "Juan Pablo Rodriguez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Rodriguez-Jp/TriviaApp/issues"
+  },
+  "homepage": "https://github.com/Rodriguez-Jp/TriviaApp#readme"
+}
