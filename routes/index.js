@@ -3,15 +3,21 @@ import express from "express";
 const router = express.Router();
 
 router.get("/", (req, res) => {
-  res.render("../views/layout/index");
+  res.render("../views/layout/index", {
+    page: "Home",
+  });
 });
 
-router.get("/Usuarios", (req, res) => {
-  res.render("usuarios");
+router.get("/login", (req, res) => {
+  res.render("login", {
+    page: "Login",
+  });
 });
 
-router.get("/Nosotros", (req, res) => {
-  res.render("nosotros");
+router.get("/aboutus", (req, res) => {
+  res.render("aboutus", {
+    page: "About us",
+  });
 });
 
 export default router;

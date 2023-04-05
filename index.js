@@ -3,19 +3,27 @@ import router from "./routes/index.js";
 
 const app = express();
 
-//Definomos el puerto
+//Define the port
 const port = process.env.PORT || 4000;
 
-//Habilitamos PUG
+//Add PUG
 app.set("view engine", "pug");
 
-//Agregamos el router
+//Gets the current year
+app.use((req, res, next) => {
+  const year = new Date();
+  res.locals.currentYear = year.getFullYear();
+  res.locals.webName = "NotesApp!";
+  return next();
+});
+
+//Add the router
 app.use("/", router);
 
-//Definimos carpeta public
+//Define public folder
 app.use(express.static("public"));
 
-//Iniciamos el servidor
+//Starts the server
 app.listen(port, () => {
-  console.log(`Servidor funcionando en el puerto ${port}`);
+  console.log(`Server working at port: ${port}`);
 });
