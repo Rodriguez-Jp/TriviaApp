@@ -1,5 +1,11 @@
 import express from "express";
-const router = express.Router();
-import { pool } from "../database";
+const notesRouter = express.Router();
+import pool from "../database.js";
 
-module.exports = router;
+notesRouter.get("/add", (req, res) => {
+  res.render("notes/add", {
+    page: "My notes",
+  });
+});
+
+export default notesRouter;

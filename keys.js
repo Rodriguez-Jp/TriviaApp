@@ -1,4 +1,4 @@
-module.exports = {
+export const databaseInfo = {
   database: {
     host: "localhost",
     user: "root",

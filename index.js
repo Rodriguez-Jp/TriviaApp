@@ -1,5 +1,6 @@
 import express from "express";
 import router from "./routes/index.js";
+import notesRouter from "./routes/notes.js";
 
 const app = express();
 
@@ -19,6 +20,7 @@ app.use((req, res, next) => {
 
 //Add the router
 app.use("/", router);
+app.use("/mynotes", notesRouter);
 
 //Define public folder
 app.use(express.static("public"));

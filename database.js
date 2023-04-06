@@ -1,8 +1,8 @@
 import mysql from "mysql";
-import promisify from "util";
-import { database } from "./keys";
+import { promisify } from "util";
+import { databaseInfo } from "./keys.js";
 
-const pool = mysql.createPool(database);
+const pool = mysql.createPool(databaseInfo.database);
 
 pool.getConnection((err, connection) => {
   if (err) {
@@ -25,4 +25,4 @@ pool.getConnection((err, connection) => {
 //Promisify pool queries
 pool.query = promisify(pool.query);
 
-module.exports = pool;
+export default pool;

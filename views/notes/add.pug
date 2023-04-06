@@ -1,0 +1,14 @@
+extends ../layout/index
+
+block content   
+    div(class="w-full flex flex-col justify-center items-center h-full")
+        div(class="max-w-3xl", id="form-container")
+            form(class="", action="mynotes/add", method="post") 
+                div(class="p-5 flex flex-col", id="title")
+                    label Title
+                    input(class="border-2", type="text", name="title", placeholder="Note title")
+                div(class="p-5", id="note", placeholder="Write your note!")
+                    label Note
+                    textarea(class="border-2 flex flex-col", name="note")
+                div(class="flex justify-center w-full p-2", id="send-btn")
+                    input(class="border-2 max-w-md", type="submit", name="send-btn", value="Save")
