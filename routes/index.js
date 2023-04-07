@@ -20,10 +20,4 @@ router.get("/aboutus", (req, res) => {
   });
 });
 
-router.get("/mynotes", (req, res) => {
-  res.render("notes", {
-    page: "My Notes",
-  });
-});
-
 export default router;

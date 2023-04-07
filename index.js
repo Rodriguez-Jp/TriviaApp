@@ -1,6 +1,8 @@
 import express from "express";
 import router from "./routes/index.js";
 import notesRouter from "./routes/notes.js";
+import morgan from "morgan";
+import { format } from "timeago.js";
 
 const app = express();
 
@@ -9,6 +11,7 @@ const port = process.env.PORT || 4000;
 
 //Add PUG
 app.set("view engine", "pug");
+app.locals.format = format;
 
 //Gets the current year
 app.use((req, res, next) => {
@@ -17,6 +20,11 @@ app.use((req, res, next) => {
   res.locals.webName = "NotesApp!";
   return next();
 });
+
+//Middleware
+app.use(morgan("dev"));
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
 
 //Add the router
 app.use("/", router);

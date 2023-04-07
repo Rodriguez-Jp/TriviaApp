@@ -27,3 +27,12 @@ ALTER TABLE notes
 
 ALTER TABLE notes
     MODIFY id INT NOT NULL AUTO_INCREMENT;
+
+ALTER TABLE notes
+    RENAME COLUMN description TO note;
+
+--Change a column
+ALTER TABLE notes
+CHANGE COLUMN `description`   -- old name; notice optional backticks
+                note        -- new name
+                TEXT;
