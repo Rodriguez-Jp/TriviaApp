@@ -3,6 +3,10 @@ import router from "./routes/index.js";
 import notesRouter from "./routes/notes.js";
 import morgan from "morgan";
 import { format } from "timeago.js";
+import flash from "connect-flash";
+import session from "express-session";
+import MySQLStore from "express-mysql-session";
+import { databaseInfo } from "./keys.js";
 
 const app = express();
 
@@ -13,18 +17,30 @@ const port = process.env.PORT || 4000;
 app.set("view engine", "pug");
 app.locals.format = format;
 
-//Gets the current year
+//Middlewares
+const MySQLStoreSession = MySQLStore(session);
+const store = new MySQLStoreSession(databaseInfo.database);
+app.use(
+  session({
+    secret: "Asupersecuresessionkey",
+    resave: false,
+    saveUninitialized: false,
+    store,
+  })
+);
+app.use(flash());
+app.use(morgan("dev"));
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
+
+//Global variables
 app.use((req, res, next) => {
   const year = new Date();
   res.locals.currentYear = year.getFullYear();
   res.locals.webName = "NotesApp!";
+  res.locals.success = req.flash("success");
   return next();
 });
-
-//Middleware
-app.use(morgan("dev"));
-app.use(express.urlencoded({ extended: false }));
-app.use(express.json());
 
 //Add the router
 app.use("/", router);

@@ -1,6 +1,6 @@
 extends ../layout/index
 
-block content 
+block content
     div(class="grid grid-cols-3 m-10 gap-5 ")
         each note in notes 
             div(class=" w-11/12 m-auto rounded-lg shadow-lg" id="note-container")
@@ -9,6 +9,10 @@ block content
                 p(class="text-justify py-2 px-4 max-h-[200px] overflow-hidden") #{note.note}
                 p(class="px-4 py-2 text-sm") !{format(note.created_at)}
                 div(id="btns-container" class="w-full flex justify-evenly p-5" data-id=note.id)
-                    a(href="", class="p-2 bg-green-500 rounded-lg text-white text-center w-1/3") Edit 
-                    a(href="mynotes/delete/" + note.id, class="p-2 bg-red-500 rounded-lg text-white text-center w-1/3") Delete
-                
+                    a(href="mynotes/edit/" + note.id class="p-2 bg-green-500 rounded-lg text-white text-center w-1/3 hover:bg-green-600 transition-colors duration-200") Edit 
+                    a(href="mynotes/delete/" + note.id, class="p-2 bg-red-500 rounded-lg text-white text-center w-1/3 hover:bg-red-600 transition-colors duration-200") Delete 
+        else
+            div(class="col-span-3 text-center mt-10")
+                h2(class="mb-5 text-2xl") There are no notes added yet, start by adding one! 
+                a(href="mynotes/add" class="w-1/4 bg-green-500 p-2 text-white rounded-md hover:bg-green-600 transition-colors duration-200") Add note 
+            
