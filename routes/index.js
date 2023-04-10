@@ -20,4 +20,6 @@ router.get("/aboutus", (req, res) => {
   });
 });
 
+//Routes to the signup process
+
 export default router;
