@@ -1,9 +1,10 @@
 import express from "express";
 import passport from "passport";
+import isLoggedIn, { isNotLoggedIn } from "../auth.js";
 
 const authRouter = express.Router();
 
-authRouter.get("/signup", (req, res) => {
+authRouter.get("/signup", isNotLoggedIn, (req, res) => {
   res.render("auth/signup", {
     page: "Sign up",
   });
@@ -18,7 +19,7 @@ authRouter.post(
   })
 );
 
-authRouter.get("/signin", (req, res) => {
+authRouter.get("/signin", isNotLoggedIn, (req, res) => {
   res.render("auth/signin", {
     page: "Sign in",
   });
@@ -32,8 +33,17 @@ authRouter.post("/signin", (req, res, next) => {
   })(req, res, next);
 });
 
-authRouter.get("/profile", (req, res) => {
-  res.send("this is your profile");
+authRouter.get("/profile", isLoggedIn, (req, res) => {
+  res.render("profile", {
+    page: "Profile",
+  });
+});
+
+authRouter.get("/logout", isLoggedIn, (req, res, next) => {
+  req.logOut((error) => {
+    if (error) return next(error);
+    res.redirect("/signin");
+  });
 });
 
 export default authRouter;

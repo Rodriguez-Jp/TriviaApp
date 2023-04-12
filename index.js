@@ -45,6 +45,7 @@ app.use((req, res, next) => {
   res.locals.webName = "NotesApp!";
   res.locals.success = req.flash("success");
   res.locals.failure = req.flash("failure");
+  res.locals.user = req.user;
   return next();
 });
 

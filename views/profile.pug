@@ -1,0 +1,9 @@
+extends ./layout/index
+
+block content 
+    div(class="container w-full mt-10")
+        div(class="max-w-lg shadow-xl mx-auto p-6")
+            h1(class="text-center text-3xl font-bold p-2") Welcome #{user.fullname}!
+            h4(class="text-center text-2xl font-semibold p-2") #{user.username}
+            div(class="w-full mx-auto flex justify-center")
+                a(href="/mynotes" class="p-2 mt-2 text-white bg-green-500 hover:bg-green-600 transisiton-colors duration-200 rounded-lg cursor-pointer") My notes!   
