@@ -528,9 +528,6 @@ video {
 .mt-2 {
   margin-top: 0.5rem;
 }
-.mt-auto {
-  margin-top: auto;
-}
 .block {
   display: block;
 }
@@ -616,9 +613,6 @@ video {
   border-width: 2px;
 }
 .border-\[1px\] {
-  border-width: 1px;
-}
-.border {
   border-width: 1px;
 }
 .border-solid {
